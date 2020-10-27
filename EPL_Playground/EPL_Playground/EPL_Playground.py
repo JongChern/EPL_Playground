@@ -12,7 +12,7 @@ async def main():
           linefig = go.Figure()
           fpl = FPL(session)
           await fpl.login(getID(),getPWD())
-          classic_league = await fpl.get_classic_league(660630)
+          classic_league = await fpl.get_classic_league(237300)
           standings = await classic_league.get_standings(1,1,1)
           print(standings['results'])
           listofids=[]
@@ -31,7 +31,8 @@ async def main():
             points.append(gwhistory['total_points'])
             gw.append(gwhistory['event'])
             lostpoints=lostpoints + gwhistory['points_on_bench']
-            linefig.add_trace(go.Scatter(x=gw, y=points, name=str(user),  mode='lines',
+           
+           linefig.add_trace(go.Scatter(x=gw, y=points, name=str(user),  mode='lines',
                          line=dict(width=2)))
            idtolostpoints[str(user)]=lostpoints
           
